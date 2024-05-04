@@ -192,6 +192,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
+vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and stay in visual mode' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and stay in visual mode' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
