@@ -195,6 +195,15 @@ vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and stay in visual mode' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and stay in visual mode' })
 
+-- Buffer stuff
+vim.keymap.set({ 'n', 'v' }, '<leader>p', [["+p]], {})
+vim.keymap.set({ 'n', 'v' }, '<leader>P', [["+P]], {})
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], {})
+vim.keymap.set({ 'n', 'v' }, '<leader>Y', [["+Y]], {})
+
+-- When pasting in visual mode, don't yank selected text
+vim.keymap.set('v', 'p', '"_dP', {})
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
