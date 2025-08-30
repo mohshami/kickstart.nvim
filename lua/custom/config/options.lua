@@ -21,7 +21,11 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-if vim.fn.has 'wsl' then
+local function is_wsl()
+    return os.getenv("WSL_INTEROP") ~= nil or os.getenv("WSL_DISTRO_NAME") ~= nil
+end
+
+if is_wsl() then
   vim.g.clipboard = {
     name = 'clip.exe (Copy Only)',
     copy = {
