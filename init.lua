@@ -677,17 +677,9 @@ do
         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
       end
 
-      -- ensure basic parser are installed (needed on non-NixOS systems)
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
-      pcall(function() require('nvim-treesitter').install(parsers) end)
-
-      -- Wrap installer API calls in pcall for NixOS compatibility
-      local ok, available_parsers = pcall(function() return require('nvim-treesitter').get_available() end)
-      if not ok then available_parsers = {} end
-
-      vim.api.nvim_create_autocmd('FileType', {
-        callback = function(args)
-          local buf, filetype = args.buf, args.match
+      -- Rename the variable under your cursor.
+      --  Most Language Servers support renaming across files, etc.
+      map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 
       -- Execute a code action, usually your cursor needs to be on top of an error
       -- or a suggestion from your LSP for this to activate.
@@ -1031,7 +1023,7 @@ do
   -- NOTE: You can add your own plugins, configuration, etc. in `lua/custom/plugins/*.lua`.
   --
   -- For independent modules, uncomment the convenience loader:
-  -- require 'custom.plugins'
+  require 'custom.plugins'
   --
   -- `custom.plugins` automatically loads files from that directory, but their
   -- order is unspecified. If plugins depend on each other, keep them in the same
@@ -1042,8 +1034,6 @@ do
   -- require 'custom.plugins.ui'
   -- require 'custom.plugins.git'
 end
-
-require 'custom/config'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
