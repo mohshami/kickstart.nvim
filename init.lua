@@ -746,6 +746,34 @@ do
 
     stylua = {}, -- Used to format Lua code
 
+    harper_ls = {
+      -- Harper-ls is a grammar/language server for prose.
+      -- It checks spelling, grammar, and style in markdown, text, git commits, etc.
+      -- See: https://github.com/elijah-potter/harper
+      filetypes = { 'markdown', 'text', 'gitcommit', 'tex' },
+      settings = {
+        ['harper-ls'] = {
+          linters = {
+            -- Enable all default linters (SpellCheck, RepeatedWords, SentenceCapitalization, etc.)
+            SpellCheck = true,
+            SpellCheckAndApply = false, -- Don't auto-apply corrections
+            RepeatedWords = true,
+            SentenceCapitalization = true,
+            LintGroups = true,
+          },
+          codeActions = {
+            forceStable = true,
+          },
+          diagnostics = {
+            -- Set severities: 'error', 'warning', 'information', 'hint'
+            spell = 'warning',
+            repeatedWord = 'warning',
+            sentenceCapitalization = 'hint',
+          },
+        },
+      },
+    },
+
     -- Special Lua Config, as recommended by neovim help docs
     lua_ls = {
       on_init = function(client)

@@ -1,4 +1,4 @@
-require 'custom/config/spell'
+-- require 'custom/config/spell'
 require 'custom/config/options'
 require 'custom/config/keymaps'
 require 'custom/config/vault'
