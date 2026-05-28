@@ -750,16 +750,32 @@ do
       -- Harper-ls is a grammar/language server for prose.
       -- It checks spelling, grammar, and style in markdown, text, git commits, etc.
       -- See: https://github.com/elijah-potter/harper
+      --
+      -- Key combinations for Harper (LSP diagnostics / code actions):
+      --   gra       - [G]oto Code [A]ction (suggest fixes for spelling/grammar)
+      --   [d / ]d   - Jump to previous / next diagnostic
+      --   <leader>q - Open diagnostic [Q]uickfix list
+      --   grn       - [R]e[n]ame (works on symbols, useful for consistent renaming)
       filetypes = { 'markdown', 'text', 'gitcommit', 'tex' },
       settings = {
         ['harper-ls'] = {
           linters = {
-            -- Enable all default linters (SpellCheck, RepeatedWords, SentenceCapitalization, etc.)
+            -- Enable spelling and grammar linters
             SpellCheck = true,
             SpellCheckAndApply = false, -- Don't auto-apply corrections
             RepeatedWords = true,
             SentenceCapitalization = true,
             LintGroups = true,
+            -- Grammar linters
+            AnA = true,
+            CorrectNumberSpacing = true,
+            DotInitialisms = true,
+            LongSentences = true,
+            NumberSuffixCapitalization = true,
+            PronounContraction = true,
+            Spaces = true,
+            UnclosedQuotes = true,
+            WrongQuotes = true,
           },
           codeActions = {
             forceStable = true,
@@ -769,6 +785,13 @@ do
             spell = 'warning',
             repeatedWord = 'warning',
             sentenceCapitalization = 'hint',
+            anA = 'warning',
+            correctNumberSpacing = 'hint',
+            longSentences = 'hint',
+            pronounContraction = 'warning',
+            spaces = 'hint',
+            unclosedQuotes = 'warning',
+            wrongQuotes = 'hint',
           },
         },
       },
