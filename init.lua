@@ -968,7 +968,7 @@ do
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets' },
+      default = { 'lsp', 'path', 'snippets', 'k8s' },
     },
 
     snippets = { preset = 'luasnip' },
